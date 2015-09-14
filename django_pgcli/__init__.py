@@ -16,15 +16,16 @@ class pgcliDatabaseClient(DatabaseClient):
         from pgcli.main import cli
 
         settings_dict = self.connection.settings_dict
-        args = []
+        url = 'pg://{USER}:{PASSWORD}@{HOST}:{PORT}/{NAME}'.format(**settings_dict)
+        args = [url]
 
-        if settings_dict['USER']:
-            args += ['--user', settings_dict['USER']]
-        if settings_dict['HOST']:
-            args += ['--host', settings_dict['HOST']]
-        if settings_dict['PORT']:
-            args += ['--port', settings_dict['PORT']]
-        args += [settings_dict['NAME']]
+        #if settings_dict['USER']:
+        #    args += ['--user', settings_dict['USER']]
+        #if settings_dict['HOST']:
+        #    args += ['--host', settings_dict['HOST']]
+        #if settings_dict['PORT']:
+        #    args += ['--port', settings_dict['PORT']]
+        #args += [settings_dict['NAME']]
         cli(args=args)
 
 
